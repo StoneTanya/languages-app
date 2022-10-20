@@ -1,11 +1,9 @@
 import React from "react";
-
+import WordCard from "../card/Card";
 
 function Main() {
     return (
-        <React.Fragment>
-            <h2>hello it's me</h2>
-        </React.Fragment>
+        <WordCard/>
     );
 }
 
