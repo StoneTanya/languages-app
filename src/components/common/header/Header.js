@@ -10,6 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import SearchAppBar from './SearchBar';
+
 const pages = ['Home', 'Words', 'Dictionary'];
 
 function Header() {
@@ -103,8 +104,7 @@ function Header() {
                     <Button
                     key={page}
                     onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'white', display: 'block' }}
-                >
+                    sx={{ my: 2, color: 'white', display: 'block' }}>
                     {page}
                 </Button>
                 ))}
