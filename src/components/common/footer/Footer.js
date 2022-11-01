@@ -24,7 +24,7 @@ function Footer() {
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                minHeight: '90vh',
+                minHeight: '30vh',
             }}
         >
             <Box
@@ -35,7 +35,7 @@ function Footer() {
                     mt: 'auto',
                     backgroundColor: (theme) =>
                         theme.palette.mode === 'light'
-                            ? theme.palette.grey[200]
+                            ? theme.palette.grey[400]
                             : theme.palette.grey[800],
                 }}
             >

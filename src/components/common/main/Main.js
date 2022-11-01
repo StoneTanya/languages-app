@@ -1,9 +1,18 @@
 import React from "react";
-import WordCard from "../card/Card";
+import WordSlider from "../../card/CardSlider";
+import WordsTable from "../../wordTable/Table";
+import { Container } from "@mui/system";
 
 function Main() {
     return (
-        <WordCard/>
+        <div>
+            <WordSlider />
+            
+            <Container>
+                <WordsTable />
+            </Container> 
+
+        </div>
     );
 }
 

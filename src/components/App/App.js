@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './Style.css';
-import Header from "./components/common/header/Header";
-import Main from './components/common/main/Main';
-import Footer from './components/common/footer/Footer';
+import Header from "../common/header/Header";
+import Main from '../common/main/Main';
+import Footer from '../common/footer/Footer';
 
 
 
