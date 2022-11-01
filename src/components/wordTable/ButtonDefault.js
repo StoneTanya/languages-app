@@ -3,10 +3,10 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
 // import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+// import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function ButtonDefault(props) {
-    const {word, addWord, removeWord} = props
+    const {word, addWord} = props
     useEffect(() => {
     }, [word])
     
@@ -23,7 +23,6 @@ export default function ButtonDefault(props) {
     }}>
         <ButtonGroup variant="text" aria-label="text button group">
             <Button onClick={() => addWord(word.id)}>Save</Button>
-            <Button onClick={() => removeWord()}><DeleteIcon></DeleteIcon></Button>
         </ButtonGroup>
     </Box>
     </>
