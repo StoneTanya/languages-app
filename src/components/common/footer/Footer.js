@@ -41,7 +41,25 @@ function Footer() {
                 <Container maxWidth="sm">
                     <Copyright />
                 </Container>
+                <Box sx={{ display: { xs: 'flex', md: 'flex' }, flexDirection: 'column', justifyItems: 'center' }}>
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        component="a"
+                        href="/"
+                        sx={{
+                        fontFamily: 'monospace',
+                        fontWeight: 700,
+                        letterSpacing: '.3rem',
+                        color: 'inherit',
+                        textDecoration: 'none',
+                    }}
+            >TOGETHER
+            </Typography>
+            <Typography>Learning Eng</Typography>
             </Box>
+            </Box>
+
         </Box>
     );
 }

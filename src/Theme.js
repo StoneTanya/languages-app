@@ -5,15 +5,25 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
     palette: {
         primary: {
-            main: '#008B8B',
+            main: '#962e47',
         },
         secondary: {
-            main: '#A0522D',
+            main: '#e83f7b',
         },
         error: {
             main: red.A400,
         },
     },
+
+    components: {
+        // Name of the component
+        Card: {
+            defaultProps: {
+                backgroundColor: "#edca8f80",
+            },
+        },
+    },
+    
 });
 
 export default theme;

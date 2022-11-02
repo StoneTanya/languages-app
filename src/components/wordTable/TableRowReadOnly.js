@@ -1,12 +1,14 @@
 import React from "react";
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import ButtonChange from "./ButtonChange";
-// import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 export default function TableRowReadOnly(props) {
-    const {word} = props
+    const {word, handleEditButton} = props
 
     return (
     <>
@@ -16,7 +18,10 @@ export default function TableRowReadOnly(props) {
             <TableCell>{word.transcription} </TableCell>
             <TableCell>{word.russian}</TableCell>
             <TableCell>
-                <ButtonChange/>
+                <ButtonGroup variant="text" aria-label="text button group">
+                    <Button onClick={() => handleEditButton()}><EditIcon></EditIcon></Button>
+                    <Button><DeleteIcon></DeleteIcon></Button>
+                </ButtonGroup>
             </TableCell>
         </TableRow>
     </>)

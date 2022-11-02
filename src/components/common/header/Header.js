@@ -26,6 +26,7 @@ function Header() {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
+                <Box sx={{ display: { xs: 'flex', md: 'flex' }, flexDirection: 'column', }}>
                     <Typography
                         variant="h6"
                         noWrap
@@ -40,8 +41,10 @@ function Header() {
                         color: 'inherit',
                         textDecoration: 'none',
                     }}
-            >LOGO
+            >TOGETHER
             </Typography>
+            <Typography>Learning Eng</Typography>
+            </Box>
             
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                 <IconButton
@@ -96,7 +99,7 @@ function Header() {
                             textDecoration: 'none',
                 }}
             >
-                LOGO
+                TOGETHER
             </Typography>
             
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
