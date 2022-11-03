@@ -21,20 +21,19 @@ export default function TableRowVersion2(props) {
         handleChangeRus();
     }
 
-
     return (
         <TableRow sx={{'&:last-child td, &:last-child th': { border: 0 } }}> 
         { editMode ?
             <TableCell><TextField id="outlined-read-only-input" defaultValue={word.id}/></TableCell>
             :<TableCell>{word.id}</TableCell>       
         } { editMode ?
-            <TableCell><TextField id="outlined-read-only-input" defaultValue={word.english} onChange={(event) => handleChangeEng(event)}/></TableCell>
+            <TableCell><TextField id="outlined-read-only-input" defaultValue={word.english} onChange={(event) => handleChangeEng(event, word.id)}/></TableCell>
             :<TableCell>{word.english}</TableCell>
         } { editMode ?
             <TableCell><TextField id="outlined-read-only-input" defaultValue={word.transcription}/></TableCell>
             :<TableCell>{word.transcription}</TableCell>
         } { editMode ?
-            <TableCell><TextField id="outlined-read-only-input" defaultValue={word.russian} onChange={(event) => handleChangeRus(event)}/></TableCell>
+            <TableCell><TextField id="outlined-read-only-input" defaultValue={word.russian} onChange={(event) => handleChangeRus(event, word.id)}/></TableCell>
             : <TableCell>{word.russian}</TableCell>
         } { editMode ?
             <TableCell>

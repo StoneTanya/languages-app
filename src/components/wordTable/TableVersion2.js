@@ -9,14 +9,25 @@ export default function WordsTable2() {
 const [editWords, setEditWord] = useState(wordsData);
 
     // функция записи изменений в инпутах понять, что не так
-    const handleChangeEng = (event) => {
-        setEditWord({english: event.target.value})
-        console.log(event.target)
+    const handleChangeRus = (event, wordID) => {
+        const changedWords = editWords.map(word => {
+            if (word.id === wordID) {
+                return {...word, russian: event.currentTarget.value}
+            }
+            return {...word}
+        })
+        setEditWord(changedWords)
+        console.log(editWords)
     }
 
-    const handleChangeRus = (event) => {
-        setEditWord({...editWords, russian: event.target.value})
-        console.log(event.target)
+    const handleChangeEng = (event, wordID) => {
+        const changedWords = editWords.map(word => {
+            if (word.id === wordID) {
+                return {...word, english: event.currentTarget.value}
+            }
+            return {...word}
+        })
+        setEditWord(changedWords)
         console.log(editWords)
     }
 
@@ -34,7 +45,7 @@ const [editWords, setEditWord] = useState(wordsData);
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                    {wordsData.map(editWords => <TableRowVersion2 word={editWords} key={editWords.id} handleChangeEng={handleChangeEng} handleChangeRus={handleChangeRus} />)}
+                    {editWords.map(editWord => <TableRowVersion2 word={editWord} key={editWord.id} handleChangeEng={handleChangeEng} handleChangeRus={handleChangeRus} />)}
                     </TableBody>
                 </Table>
             </TableContainer>
