@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Box } from '@mui/system';
 import Button from '@mui/material/Button';
-import wordsData from "./words";
+import wordsData from "../common/main/words";
 import WordCard from "./Card";
 
 export default function WordSlider() {

@@ -1,35 +1,32 @@
-import React, {useState} from "react";
+import React from "react";
 import { Paper, Box, Table, TableContainer, TableBody, TableCell, TableRow, TableHead} from "@mui/material";
-import wordsData from "../card/words";
 import styles from "./table.module.scss";
 import TableRowVersion2 from "./TableRowVersion2";
 
-export default function WordsTable2() {
+export default function WordsTable2({words, createOrUpdate}) {
 
-const [editWords, setEditWord] = useState(wordsData);
-
-    // функция записи изменений в инпутах понять, что не так
-    const handleChangeRus = (event, wordID) => {
-        const changedWords = editWords.map(word => {
-            if (word.id === wordID) {
-                return {...word, russian: event.currentTarget.value}
-            }
-            return {...word}
-        })
-        setEditWord(changedWords)
-        console.log(editWords)
-    }
-
-    const handleChangeEng = (event, wordID) => {
-        const changedWords = editWords.map(word => {
-            if (word.id === wordID) {
-                return {...word, english: event.currentTarget.value}
-            }
-            return {...word}
-        })
-        setEditWord(changedWords)
-        console.log(editWords)
-    }
+    // // функция записи изменений в инпутах понять, что не так
+    // const handleChangeRus = (event, wordID) => {
+    //     const changedWords = editWords.map(word => {
+    //         if (word.id === wordID) {
+    //             return {...word, russian: event.currentTarget.value}
+    //         }
+    //         return {...word}
+    //     })
+    //     setEditWord(changedWords)
+    //     console.log(editWords)
+    // }
+    //
+    // const handleChangeEng = (event, wordID) => {
+    //     const changedWords = editWords.map(word => {
+    //         if (word.id === wordID) {
+    //             return {...word, english: event.currentTarget.value}
+    //         }
+    //         return {...word}
+    //     })
+    //     setEditWord(changedWords)
+    //     console.log(editWords)
+    // }
 
     return (
         <Box m={5}>
@@ -45,7 +42,11 @@ const [editWords, setEditWord] = useState(wordsData);
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                    {editWords.map(editWord => <TableRowVersion2 word={editWord} key={editWord.id} handleChangeEng={handleChangeEng} handleChangeRus={handleChangeRus} />)}
+                    {words.map(editWord =>
+                        <TableRowVersion2
+                            word={editWord} key={editWord.id} createOrUpdate={createOrUpdate}
+                        />
+                    )}
                     </TableBody>
                 </Table>
             </TableContainer>
