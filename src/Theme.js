@@ -13,17 +13,7 @@ const theme = createTheme({
         error: {
             main: red.A400,
         },
-    },
-
-    components: {
-        // Name of the component
-        Card: {
-            defaultProps: {
-                backgroundColor: "#edca8f80",
-            },
-        },
-    },
-    
+    },    
 });
 
 export default theme;

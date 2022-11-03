@@ -1,4 +1,4 @@
-let wordsData = `[
+let wordsData = [
 {
     "id":"1",
     "english":"finger",
@@ -59,8 +59,9 @@ let wordsData = `[
     "english":"Russia",
     "transcription":"[rasha]",
     "russian":"Россия"
-}]`;
+}
+];
 
-wordsData = JSON.parse(wordsData);
+// wordsData = JSON.parse(wordsData);
 
 export default wordsData

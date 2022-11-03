@@ -1,11 +1,9 @@
 import React from "react";
-import TableCell from '@mui/material/TableCell';
-import TableRow from '@mui/material/TableRow';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
+import {TableCell, TableRow, Button, ButtonGroup  } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+// строка в режиме чтения
 
 export default function TableRowReadOnly(props) {
     const {word, handleEditButton} = props
@@ -13,9 +11,9 @@ export default function TableRowReadOnly(props) {
     return (
     <>
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-            <TableCell>{word.id}  </TableCell>
-            <TableCell>{word.english} </TableCell>
-            <TableCell>{word.transcription} </TableCell>
+            <TableCell>{word.id}</TableCell>
+            <TableCell>{word.english}</TableCell>
+            <TableCell>{word.transcription}</TableCell>
             <TableCell>{word.russian}</TableCell>
             <TableCell>
                 <ButtonGroup variant="text" aria-label="text button group">
