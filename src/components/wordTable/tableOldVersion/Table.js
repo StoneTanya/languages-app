@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Paper, Box, Table, TableContainer, TableBody, TableCell, TableRow, TableHead  } from "@mui/material";
 import TableRowReadOnly from "./TableRowReadOnly";
 import TableRowEditMode from "./TableRowEditMode";
-import wordsData from "../../card/words";
+import wordsData from "../../common/main/words";
 import styles from "../table.module.scss";
 
 export default function WordsTable() {
