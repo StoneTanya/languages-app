@@ -5,6 +5,8 @@ import wordsData from "./words";
 import WordCard from "./Card";
 
 export default function WordSlider() {
+    
+    // слайдер - листалка слов
     const [activeStep, setActiveStep] = useState(0);
     const maxSteps = wordsData.length;
     const handleNext = () => {
@@ -14,14 +16,6 @@ export default function WordSlider() {
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
-    
-
-    // const [defaultState, setState] = useState(wordsData);
-    // console.log(defaultState)
-    
-    // const showRussian = () => {
-    //     setState(wordsData)
-    // }
 
     const WordComponent = wordsData.map(word => <WordCard key={word.id} word={word} />)
 
