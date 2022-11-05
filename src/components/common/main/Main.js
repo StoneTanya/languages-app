@@ -1,8 +1,7 @@
 import React, {useState} from "react";
-import WordSlider from "../../card/CardSlider";
-import WordsTable from "../../wordTable/tableOldVersion/Table";
 import { Container } from "@mui/system";
-import WordsTable2 from "../../wordTable/TableVersion2";
+import WordSlider from "../../card/CardSlider";
+import WordsTable from "../../wordTable/Table";
 import wordsData from './words';
 
 function Main() {
@@ -18,14 +17,18 @@ function Main() {
         setWords(newWords)
     }
 
+    const deleteWord = (wordID) => {
+        setWords(words.filter(word => word.id !== wordID));
+        }
+
     return (
         <div>
-            <WordSlider words={words} createOrUpdate={createOrUpdateWord} />
+            <WordSlider words={words} createOrUpdate={createOrUpdateWord}/>
             <Container>
-                <WordsTable2 words={words} createOrUpdate={createOrUpdateWord}  />
-            </Container> 
-            <Container>
-                <WordsTable words={words} createOrUpdate={createOrUpdateWord} />
+                <WordsTable words={words} 
+                            createOrUpdate={createOrUpdateWord} 
+                            deleteWord={deleteWord} 
+                />                
             </Container> 
         </div>
     );

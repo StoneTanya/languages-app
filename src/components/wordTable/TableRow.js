@@ -3,8 +3,8 @@ import {TableCell, TableRow, Button, ButtonGroup, TextField} from '@mui/material
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export default function TableRowVersion2(props) {
-    const {word, createOrUpdate} = props
+export default function TableRowComp(props) {
+    const {word, createOrUpdate, deleteWord} = props
 
     // смена состояний строк таблицы (режим чтения-по умолчанию либо режим редактирования)
     const [editMode, setEditMode] = useState(false);
@@ -21,6 +21,7 @@ export default function TableRowVersion2(props) {
         console.log(word, changingWord)
         createOrUpdate(changingWord);
     }
+    //временное состояния изменения слова
     function changeWord(lang, value) {
         const tmpWord = {...changingWord}
         tmpWord[lang] = value
@@ -44,7 +45,7 @@ export default function TableRowVersion2(props) {
                 <TableCell>
                     <ButtonGroup variant="text" aria-label="text button group">
                         <Button onClick={handleSaveButton}>Save</Button>
-                        <Button><DeleteIcon></DeleteIcon></Button>
+                        <Button onClick={() => deleteWord(word.id)}><DeleteIcon></DeleteIcon></Button>
                     </ButtonGroup>
                 </TableCell>
             </>
@@ -57,7 +58,7 @@ export default function TableRowVersion2(props) {
                 <TableCell>
                         <ButtonGroup variant="text" aria-label="text button group">
                             <Button onClick={handleEditButton}><EditIcon></EditIcon></Button>
-                            <Button><DeleteIcon></DeleteIcon></Button>
+                            <Button onClick={() => deleteWord(word.id)}><DeleteIcon></DeleteIcon></Button>
                         </ButtonGroup>
                 </TableCell>
             </>

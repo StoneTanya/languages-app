@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Container, Box } from '@mui/system';
 import Button from '@mui/material/Button';
-import wordsData from "../common/main/words";
 import WordCard from "./Card";
 
-export default function WordSlider() {
-    
+export default function WordSlider(props) {
+    const {words, createOrUpdate, deleteWord} = props
+
     // слайдер - листалка слов
     const [activeStep, setActiveStep] = useState(0);
-    const maxSteps = wordsData.length;
+    const maxSteps = words.length;
+
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
@@ -17,12 +18,11 @@ export default function WordSlider() {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const WordComponent = wordsData.map(word => <WordCard key={word.id} word={word} />)
+    const WordComponent = words.map(editWord => <WordCard word={editWord} key={editWord.id} createOrUpdate={createOrUpdate} deleteWord={deleteWord}/>)
 
     return (
         <Container>
             <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-                
                 {WordComponent[activeStep]}
                 <Box>
                     <Button size="small" onClick={handleBack} disabled={activeStep === 0}>Back</Button>
