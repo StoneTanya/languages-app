@@ -1,10 +1,18 @@
 .card__word {
-    background-color: #f5d8e480;
     display:flex;
     flex-flow: column;
     align-items: center;
 }
 
-.card__button {
-    background-color: #8d144780;
+.content {
+    font-family: 'Days One', sans-serif;
+}
+
+.button {
+    font-family: 'Days One', sans-serif;
+    cursor: pointer;
+    transition: ease-out;
+    &:hover {
+        transform: scale(1.1);
+        }
 }

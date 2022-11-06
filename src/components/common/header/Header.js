@@ -1,18 +1,13 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Button, MenuItem} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
 import SearchAppBar from './SearchBar';
+import styles from "./header.module.scss"
+import { StyledEngineProvider } from '@mui/material/styles';
+import logo from "./rocket.png";
 
-const pages = ['Home', 'Words', 'Dictionary'];
-
+const pages = ['Home', 'FlashCards', 'Dictionary'];
+const title = ['RAPID \n ENGLISH']
 function Header() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const handleOpenNavMenu = (event) => {
@@ -23,28 +18,20 @@ function Header() {
     };
 
     return (
+        <StyledEngineProvider injectFirst>
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                <Box sx={{ display: { xs: 'flex', md: 'flex' }, flexDirection: 'column', }}>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="/"
-                        sx={{
-                        mr: 2,
-                        display: { xs: 'none', md: 'flex' },
-                        fontFamily: 'monospace',
-                        fontWeight: 700,
-                        letterSpacing: '.3rem',
-                        color: 'inherit',
-                        textDecoration: 'none',
-                    }}
-            >TOGETHER
-            </Typography>
-            <Typography>Learning Eng</Typography>
-            </Box>
+                <Box className={styles.logo__box}>
+                    <img className={styles.logo} src={logo} />
+                </Box>
+                <Box sx={{ display: { xs: 'flex', md: 'flex' }, flexDirection: 'column'}}>
+                    <Typography className={styles.title} 
+                        variant="h6" noWrap component="a" href="/" 
+                        sx={{mr: 2, display: { xs: 'none', md: 'flex' }}}>
+                        {title}
+                    </Typography>
+                </Box>
             
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                 <IconButton
@@ -53,8 +40,7 @@ function Header() {
                     aria-controls="menu-appbar"
                     aria-haspopup="true"
                     onClick={handleOpenNavMenu}
-                    color="inherit"
-                >
+                    color="inherit">
                     <MenuIcon />
                 </IconButton>
                 <Menu
@@ -77,34 +63,20 @@ function Header() {
                 >
                 {pages.map((page) => (
                     <MenuItem key={page} onClick={handleCloseNavMenu}>
-                        <Typography textAlign="center">{page}</Typography>
+                        <Typography className={styles.content} textAlign="center">{page}</Typography>
                     </MenuItem>
                 ))}
                 </Menu>
-            
             </Box>
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href=""
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                }}
-            >
+            <Typography className={styles.title}
+                        variant="h5" noWrap component="a" href=""
+                        sx={{mr: 2, display: { xs: 'flex', md: 'none' }, flexGrow: 1}}>
                 TOGETHER
             </Typography>
             
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {pages.map((page) => (
-                    <Button
+                    <Button className={styles.content}
                     key={page}
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: 'white', display: 'block' }}>
@@ -118,6 +90,7 @@ function Header() {
             </Toolbar>
         </Container>
     </AppBar>
+    </StyledEngineProvider>
     );
 };  
 

@@ -1,11 +1,30 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Container } from "@mui/system";
 import WordSlider from "../../card/CardSlider";
 import WordsTable from "../../wordTable/Table";
-import wordsData from './words';
+import styles from "./main.module.scss"
+// import wordsData from './words';
 
-function Main() {
-    const [words, setWords] = useState(wordsData)
+
+function Main(props) {
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [words, setWords] = useState([]);
+    useEffect(() =>{
+        fetch(`http://itgirlschool.justmakeit.ru/api/words/${props.id}/`)
+        .then(response => response.json()) 
+        .then (
+            (result) => {
+                setIsLoaded(true);
+                setWords(result);  
+            }, 
+            (error) => {
+                setIsLoaded(true);
+                setError(error);
+            }
+        )
+    }, [props.id]);
+
     function createOrUpdateWord(newWord) {
         const wordIndex = words.findIndex(word => word.id === newWord.id)
         let newWords;
@@ -22,8 +41,10 @@ function Main() {
         }
 
     return (
-        <div>
+        <div className={styles.back__main}>
+            <Container>
             <WordSlider words={words} createOrUpdate={createOrUpdateWord}/>
+            </Container> 
             <Container>
                 <WordsTable words={words} 
                             createOrUpdate={createOrUpdateWord} 
