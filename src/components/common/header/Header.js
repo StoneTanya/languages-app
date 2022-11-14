@@ -23,7 +23,7 @@ function Header() {
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                 <Box className={styles.logo__box}>
-                    <img className={styles.logo} src={logo} />
+                    <img className={styles.logo} src={logo} alt="logo" />
                 </Box>
                 <Box sx={{ display: { xs: 'flex', md: 'flex' }, flexDirection: 'column'}}>
                     <Typography className={styles.title} 

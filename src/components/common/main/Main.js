@@ -2,16 +2,15 @@ import React, {useState, useEffect} from "react";
 import { Container } from "@mui/system";
 import WordSlider from "../../card/CardSlider";
 import WordsTable from "../../wordTable/Table";
-import styles from "./main.module.scss"
-// import wordsData from './words';
+import styles from "./main.module.scss";
 
 
-function Main(props) {
+function Main() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [words, setWords] = useState([]);
     useEffect(() =>{
-        fetch(`http://itgirlschool.justmakeit.ru/api/words/${props.id}/`)
+        fetch(`http://itgirlschool.justmakeit.ru/api/words/`)
         .then(response => response.json()) 
         .then (
             (result) => {
@@ -19,11 +18,11 @@ function Main(props) {
                 setWords(result);  
             }, 
             (error) => {
-                setIsLoaded(true);
+                setIsLoaded(false);
                 setError(error);
             }
         )
-    }, [props.id]);
+    }, []);
 
     function createOrUpdateWord(newWord) {
         const wordIndex = words.findIndex(word => word.id === newWord.id)
@@ -38,7 +37,11 @@ function Main(props) {
 
     const deleteWord = (wordID) => {
         setWords(words.filter(word => word.id !== wordID));
-        }
+    }
+
+    // const filteredWords = words.filter(word => {
+    //     return word.russian.toLowerCase().includes(value.toLowerCase)
+    // })
 
     return (
         <div className={styles.back__main}>
@@ -48,7 +51,8 @@ function Main(props) {
             <Container>
                 <WordsTable words={words} 
                             createOrUpdate={createOrUpdateWord} 
-                            deleteWord={deleteWord} 
+                            deleteWord={deleteWord}
+                            // filteredWords={filteredWords} 
                 />                
             </Container> 
         </div>

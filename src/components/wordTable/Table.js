@@ -2,7 +2,6 @@ import {React, useState} from "react";
 import { Paper, Box, Table, TableContainer, TableBody, TableCell, TableRow, TableHead, TableFooter, TablePagination } from "@mui/material";
 import styles from "./table.module.scss";
 import TableRowComp from "./TableRow";
-// import TableRowEmpty from "./TableRowEmty";
 import { StyledEngineProvider } from '@mui/material/styles';
 
 export default function WordsTable({ words, createOrUpdate, deleteWord, TablePaginationActions }) {
@@ -54,7 +53,7 @@ export default function WordsTable({ words, createOrUpdate, deleteWord, TablePag
                         <TableRow>
                             <TablePagination
                                 rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-                                colSpan={3}
+                                colSpan={5}
                                 count={words.length}
                                 rowsPerPage={rowsPerPage}
                                 page={page}

@@ -46,15 +46,14 @@ function Footer() {
                         component="a"
                         href="/"
                         sx={{
-                        fontFamily: 'monospace',
                         fontWeight: 700,
                         letterSpacing: '.3rem',
                         color: 'inherit',
                         textDecoration: 'none',
                     }}
-            >TOGETHER
+            >Rapid English
             </Typography>
-            <Typography>Learning Eng</Typography>
+            <Typography>Learning Eng Together</Typography>
             </Box>
             </Box>
 

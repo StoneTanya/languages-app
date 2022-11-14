@@ -1,7 +1,8 @@
-import * as React from 'react';
+import {React, useState} from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -46,14 +47,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
+    const [value, setValue] = useState('')
+    const valueChangeHandler = event => {
+        setValue(event.target.value)
+    }
+    
     return (
         <Search>
             <SearchIconWrapper>
                 <SearchIcon />
             </SearchIconWrapper>
+
             <StyledInputBase
                 placeholder="Search…"
                 inputProps={{ 'aria-label': 'search' }}
+                onChange={valueChangeHandler}
+                value={value}
             />
         </Search>
     );
