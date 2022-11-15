@@ -14,11 +14,9 @@ export default function TableRowComp(props) {
     const handleEditButton = () => {
         setEditMode(true);
     }
-
     // возвращаемся в режим чтения по кнопке save, а также запускаем функцию записи изменения инпутов
     const handleSaveButton = () => {
         setEditMode(false);
-        console.log(word, changingWord)
         createOrUpdate(changingWord);
     }
     //временное состояния изменения слова

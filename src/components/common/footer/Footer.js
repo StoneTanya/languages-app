@@ -1,13 +1,14 @@
 import React from "react";
 import { Typography, Box, Link } from '@mui/material';
 import { Container } from "@mui/system";
-
+import styles from "./footer.module.scss"
+import { StyledEngineProvider } from '@mui/material/styles';
 
 function Copyright() {
     return (
-        <Typography variant="body2" color="text.secondary" align="center">
+        <Typography className={styles.content} variant="body2" color="text.secondary" align="center">
             {'Copyright © '}
-            <Link color="inherit" href="#">
+            <Link className={styles.content} color="inherit" href="#">
                 Tanya Kameneva
             </Link>{' '}
             {new Date().getFullYear()}
@@ -17,16 +18,14 @@ function Copyright() {
 
 function Footer() {
     return (
+        <StyledEngineProvider injectFirst>
         <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                minHeight: '30vh',
+            sx={{display: 'flex', flexDirection: 'column', minHeight: '30vh',
             }}
         >
             <Box
                 component="footer"
-                sx={{
+                sx={{ display: { xs: 'flex', md: 'flex' }, flexDirection: 'column', justifyItems: 'center',  
                     py: 3,
                     px: 2,
                     mt: 'auto',
@@ -36,11 +35,11 @@ function Footer() {
                             : theme.palette.grey[800],
                 }}
             >
+                <Box sx={{ display: { xs: 'flex', md: 'flex' }, flexDirection: 'column', justifyItems: 'center' }}>
                 <Container maxWidth="sm">
                     <Copyright />
                 </Container>
-                <Box sx={{ display: { xs: 'flex', md: 'flex' }, flexDirection: 'column', justifyItems: 'center' }}>
-                    <Typography
+                    <Typography className={styles.title}
                         variant="h6"
                         noWrap
                         component="a"
@@ -50,14 +49,12 @@ function Footer() {
                         letterSpacing: '.3rem',
                         color: 'inherit',
                         textDecoration: 'none',
-                    }}
-            >Rapid English
-            </Typography>
-            <Typography>Learning Eng Together</Typography>
+                    }}> Rapid English </Typography>
+            <Typography className={styles.content}>Learning English Together</Typography>
+            </Box>                
             </Box>
-            </Box>
-
         </Box>
+        </StyledEngineProvider>
     );
 }
 

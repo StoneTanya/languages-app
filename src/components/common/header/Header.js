@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Button, MenuItem} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchAppBar from './SearchBar';
 import styles from "./header.module.scss"
 import { StyledEngineProvider } from '@mui/material/styles';
 import logo from "./rocket.png";
@@ -28,7 +27,7 @@ function Header() {
                 <Box sx={{ display: { xs: 'flex', md: 'flex' }, flexDirection: 'column'}}>
                     <Typography className={styles.title} 
                         variant="h6" noWrap component="a" href="/" 
-                        sx={{mr: 2, display: { xs: 'none', md: 'flex' }}}>
+                        sx={{mr: 6, display: { xs: 'none', md: 'flex' }}}>
                         {title}
                     </Typography>
                 </Box>
@@ -84,8 +83,6 @@ function Header() {
                 </Button>
                 ))}
             </Box>
-    
-            <SearchAppBar/>
 
             </Toolbar>
         </Container>

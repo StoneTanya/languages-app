@@ -4,13 +4,13 @@ import WordSlider from "../../card/CardSlider";
 import WordsTable from "../../wordTable/Table";
 import styles from "./main.module.scss";
 
-
-function Main() {
+export default function Main() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [words, setWords] = useState([]);
-    useEffect(() =>{
-        fetch(`http://itgirlschool.justmakeit.ru/api/words/`)
+
+    useEffect(() => {
+        fetch(`http://itgirlschool.justmakeit.ru/api/words/}`)
         .then(response => response.json()) 
         .then (
             (result) => {
@@ -39,24 +39,24 @@ function Main() {
         setWords(words.filter(word => word.id !== wordID));
     }
 
-    // const filteredWords = words.filter(word => {
-    //     return word.russian.toLowerCase().includes(value.toLowerCase)
-    // })
-
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+        return <div>Loading...</div>;
+    } else {
     return (
         <div className={styles.back__main}>
             <Container>
-            <WordSlider words={words} createOrUpdate={createOrUpdateWord}/>
+            <WordSlider words={words} />
             </Container> 
+            
             <Container>
                 <WordsTable words={words} 
                             createOrUpdate={createOrUpdateWord} 
                             deleteWord={deleteWord}
-                            // filteredWords={filteredWords} 
                 />                
             </Container> 
         </div>
     );
+    }
 }
-
-export default Main
