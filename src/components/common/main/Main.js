@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
-import { Container } from "@mui/system";
+import { Route, Routes } from "react-router-dom";
 import WordSlider from "../../card/CardSlider";
 import WordsTable from "../../wordTable/Table";
-import styles from "./main.module.scss";
 
 export default function Main() {
     const [error, setError] = useState(null);
@@ -27,7 +26,7 @@ export default function Main() {
     function createOrUpdateWord(newWord) {
         const wordIndex = words.findIndex(word => word.id === newWord.id)
         let newWords;
-        if (wordIndex) {
+        if (wordIndex !== -1) {
             newWords = [...words.slice(0, wordIndex), newWord, ...words.slice(wordIndex + 1)]
         } else {
             newWords = [newWord, ...words]
@@ -45,18 +44,14 @@ export default function Main() {
         return <div>Loading...</div>;
     } else {
     return (
-        <div className={styles.back__main}>
-            <Container>
-            <WordSlider words={words} />
-            </Container> 
-            
-            <Container>
-                <WordsTable words={words} 
+            <Routes>
+            <Route path="flashcards" element={<WordSlider words={words} />} />
+            <Route path="dictionary" element={<WordsTable words={words} 
                             createOrUpdate={createOrUpdateWord} 
                             deleteWord={deleteWord}
+                />}
                 />                
-            </Container> 
-        </div>
+        </Routes>
     );
     }
 }

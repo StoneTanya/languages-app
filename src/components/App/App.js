@@ -4,16 +4,18 @@ import Header from "../common/header/Header";
 import Main from '../common/main/Main';
 import Footer from '../common/footer/Footer';
 import Home from "../common/home/home";
+import { Route, Routes } from 'react-router-dom';
 
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <Home/>
-      <Main/>
-      <Footer/>
-
+        <Header/>
+        <Routes>
+            <Route path="/" element={<Home/>} />
+        </Routes>
+        <Main/>
+        <Footer/>
     </div>
   );
 }

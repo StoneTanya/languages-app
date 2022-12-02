@@ -1,5 +1,6 @@
 import {React, useState} from "react";
 import { Paper, Box, Table, TableContainer, TableBody, TableCell, TableRow, TableHead, TableFooter, TablePagination, TextField } from "@mui/material";
+import { Container } from "@mui/system";
 import styles from "./table.module.scss";
 import TableRowComp from "./TableRow";
 import { StyledEngineProvider } from '@mui/material/styles';
@@ -37,6 +38,7 @@ export default function WordsTable({ words, createOrUpdate, deleteWord, TablePag
     }
     return (
         <StyledEngineProvider injectFirst>
+        <Container>
         <Box m={5}>
             <Box component="form" sx={{'& .MuiTextField-root': { m: 1, width: '25ch' },}} noValidate autoComplete="off">
                 <TextField id="filled-search" label="Search for..." type="search" 
@@ -93,6 +95,7 @@ export default function WordsTable({ words, createOrUpdate, deleteWord, TablePag
                 </Table>
             </TableContainer>
         </Box>
+        </Container>
         </StyledEngineProvider>
     );
 }

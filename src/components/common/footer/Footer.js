@@ -20,7 +20,7 @@ function Footer() {
     return (
         <StyledEngineProvider injectFirst>
         <Box
-            sx={{display: 'flex', flexDirection: 'column', minHeight: '30vh',
+            sx={{display: 'flex', flexDirection: 'column', minHeight: '45vh',
             }}
         >
             <Box

@@ -4,9 +4,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import styles from "./header.module.scss"
 import { StyledEngineProvider } from '@mui/material/styles';
 import logo from "./rocket.png";
+import { Link } from 'react-router-dom';
 
 const pages = ['Home', 'FlashCards', 'Dictionary'];
 const title = ['RAPID \n ENGLISH']
+
 function Header() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const handleOpenNavMenu = (event) => {
@@ -21,13 +23,15 @@ function Header() {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
+                
                 <Box className={styles.logo__box}>
                     <img className={styles.logo} src={logo} alt="logo" />
                 </Box>
-                <Box sx={{ display: { xs: 'flex', md: 'flex' }, flexDirection: 'column'}}>
+                
+                <Box sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'column'}}>
                     <Typography className={styles.title} 
                         variant="h6" noWrap component="a" href="/" 
-                        sx={{mr: 6, display: { xs: 'none', md: 'flex' }}}>
+                        sx={{mr: 8, ml: 5, display: 'flex' }}>
                         {title}
                     </Typography>
                 </Box>
@@ -35,31 +39,26 @@ function Header() {
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                 <IconButton
                     size="large"
-                    aria-label="account of current user"
                     aria-controls="menu-appbar"
                     aria-haspopup="true"
                     onClick={handleOpenNavMenu}
                     color="inherit">
                     <MenuIcon />
                 </IconButton>
+                
                 <Menu
                     id="menu-appbar"
                     anchorEl={anchorElNav}
                     anchorOrigin={{
                     vertical: 'bottom',
-                    horizontal: 'left',
-                }}
+                    horizontal: 'left'}}
                     keepMounted
                     transformOrigin={{
                     vertical: 'top',
-                    horizontal: 'left',
-                }}
+                    horizontal: 'left'}}
                     open={Boolean(anchorElNav)}
                     onClose={handleCloseNavMenu}
-                    sx={{
-                    display: { xs: 'block', md: 'none' },
-                }}
-                >
+                    sx={{display: { xs: 'block', md: 'none' }}}>
                 {pages.map((page) => (
                     <MenuItem key={page} onClick={handleCloseNavMenu}>
                         <Typography className={styles.content} textAlign="center">{page}</Typography>
@@ -67,21 +66,23 @@ function Header() {
                 ))}
                 </Menu>
             </Box>
+            
             <Typography className={styles.title}
-                        variant="h5" noWrap component="a" href=""
+                        noWrap component={Link} to="/"
                         sx={{mr: 2, display: { xs: 'flex', md: 'none' }, flexGrow: 1}}>
-                TOGETHER
+                Rapid English
             </Typography>
             
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                {pages.map((page) => (
-                    <Button className={styles.content}
-                    key={page}
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'white', display: 'block' }}>
-                    {page}
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>                
+                <Button className={styles.content} component={Link} to="/flashcards">
+                    FlashCards
                 </Button>
-                ))}
+                <Button className={styles.content} component={Link} to="/dictionary">
+                    Dictionary
+                </Button>
+                <Button className={styles.content} component={Link} to="/">
+                    Home
+                </Button>
             </Box>
 
             </Toolbar>
