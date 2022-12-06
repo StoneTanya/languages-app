@@ -16,7 +16,7 @@ function Copyright() {
     );
 }
 
-function Footer() {
+export default function Footer() {
     return (
         <StyledEngineProvider injectFirst>
         <Box
@@ -58,5 +58,5 @@ function Footer() {
     );
 }
 
-export default Footer
+
 

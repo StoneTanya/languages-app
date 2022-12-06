@@ -1,27 +1,22 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import { Route, Routes } from "react-router-dom";
-import WordSlider from "../../card/CardSlider";
-import WordsTable from "../../wordTable/Table";
+import {useLoaderData} from 'react-router-dom';
+import WordSlider from "../../pages/card/CardSlider";
+import WordsTable from "../../pages/wordTable/Table";
+
+export async function loader({ request }) {
+    const response = await fetch("http://itgirlschool.justmakeit.ru/api/words/", {
+        signal: request.signal,
+    });
+    const initialWords = await response.json();
+    return {initialWords};
+}
 
 export default function Main() {
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [words, setWords] = useState([]);
-
-    useEffect(() => {
-        fetch(`http://itgirlschool.justmakeit.ru/api/words/}`)
-        .then(response => response.json()) 
-        .then (
-            (result) => {
-                setIsLoaded(true);
-                setWords(result);  
-            }, 
-            (error) => {
-                setIsLoaded(false);
-                setError(error);
-            }
-        )
-    }, []);
+    const {initialWords} = useLoaderData();
+    const [words, setWords] = useState(initialWords);
+    
+    console.log(words);
 
     function createOrUpdateWord(newWord) {
         const wordIndex = words.findIndex(word => word.id === newWord.id)
@@ -38,20 +33,14 @@ export default function Main() {
         setWords(words.filter(word => word.id !== wordID));
     }
 
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-        return <div>Loading...</div>;
-    } else {
     return (
-            <Routes>
+<Routes>
             <Route path="flashcards" element={<WordSlider words={words} />} />
             <Route path="dictionary" element={<WordsTable words={words} 
                             createOrUpdate={createOrUpdateWord} 
                             deleteWord={deleteWord}
                 />}
                 />                
-        </Routes>
+        </Routes>         
     );
     }
-}
