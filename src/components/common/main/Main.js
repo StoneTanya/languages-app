@@ -34,13 +34,11 @@ export default function Main() {
     }
 
     return (
-<Routes>
+        <Routes>
             <Route path="flashcards" element={<WordSlider words={words} />} />
             <Route path="dictionary" element={<WordsTable words={words} 
                             createOrUpdate={createOrUpdateWord} 
-                            deleteWord={deleteWord}
-                />}
-                />                
+                            deleteWord={deleteWord}/>}/>                
         </Routes>         
     );
     }
