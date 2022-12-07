@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const pages = ['Home', 'FlashCards', 'Dictionary'];
 const title = ['RAPID \n ENGLISH']
 
-function Header() {
+export default function Header() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -93,4 +93,3 @@ function Header() {
 };  
 
 
-export default Header

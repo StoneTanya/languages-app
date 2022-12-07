@@ -8,7 +8,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 
 const slogan = 'Learn \n English Language \n with flashcards'
 
-export default function Home() {
+function Home() {
     let navigate = useNavigate();
     
     const goToCards = () => {
@@ -36,3 +36,4 @@ export default function Home() {
     );
 }
 
+export default Home;
