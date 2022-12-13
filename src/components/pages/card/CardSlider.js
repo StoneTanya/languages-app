@@ -3,9 +3,10 @@ import { Container, Box } from '@mui/system';
 import Button from '@mui/material/Button';
 import WordCard from "./Card";
 import styles from './cards.module.scss';
+import {useOutletContext} from 'react-router-dom';
 
-export default function CardsSlider(props) {
-    const {words, createOrUpdate, deleteWord} = props
+export default function CardsSlider() {
+    const {words, createOrUpdate, deleteWord} = useOutletContext();
 
     const [activeStep, setActiveStep] = useState(0);
     const maxSteps = words.length;

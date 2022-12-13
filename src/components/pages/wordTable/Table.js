@@ -1,11 +1,14 @@
 import {React, useState} from "react";
+import {useOutletContext} from 'react-router-dom';
 import { Paper, Box, Table, TableContainer, TableBody, TableCell, TableRow, TableHead, TableFooter, TablePagination, TextField } from "@mui/material";
 import { Container } from "@mui/system";
 import styles from "./table.module.scss";
 import TableRowComp from "./TableRow";
 import { StyledEngineProvider } from '@mui/material/styles';
 
-export default function WordsTable({ words, createOrUpdate, deleteWord, TablePaginationActions }) {
+export default function WordsTable() {
+    const {words, createOrUpdate, deleteWord, TablePaginationActions} = useOutletContext();
+
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     
