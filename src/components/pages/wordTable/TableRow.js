@@ -3,29 +3,23 @@ import {TableCell, TableRow, Button, ButtonGroup, TextField} from '@mui/material
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export default function TableRowComp(props) {
-    const {word, createOrUpdate, deleteWord} = props
-
-    // смена состояний строк таблицы (режим чтения-по умолчанию либо режим редактирования)
+export default function TableRowComp({word, createOrUpdateWord, deleteWord}) {
     const [editMode, setEditMode] = useState(false);
     const [changingWord, setChangingWord] = useState(word)
 
-    // функция запуска режима редактирования полей, запускается при нажатии кнопки
     const handleEditButton = () => {
         setEditMode(true);
     }
-    // возвращаемся в режим чтения по кнопке save, а также запускаем функцию записи изменения инпутов
     const handleSaveButton = () => {
         setEditMode(false);
-        createOrUpdate(changingWord);
+        createOrUpdateWord(changingWord);
     }
-    //временное состояния изменения слова
+
     function changeWord(lang, value) {
         const tmpWord = {...changingWord}
         tmpWord[lang] = value
         setChangingWord(tmpWord);
     }
-
     return (
         <TableRow sx={{'&:last-child td, &:last-child th': { border: 0 } }}> 
         { editMode ?

@@ -5,9 +5,10 @@ import { Container } from "@mui/system";
 import styles from "./table.module.scss";
 import TableRowComp from "./TableRow";
 import { StyledEngineProvider } from '@mui/material/styles';
+import Loader from "../loader/loader";
 
 export default function WordsTable() {
-    const {words, createOrUpdate, deleteWord, TablePaginationActions} = useOutletContext();
+    const {words, createOrUpdateWord, deleteWord, TablePaginationActions, isLoaded, error} = useOutletContext();
 
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -39,6 +40,11 @@ export default function WordsTable() {
             });
         });
     }
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+        return <Loader/>;
+    } else {
     return (
         <StyledEngineProvider injectFirst>
         <Container>
@@ -63,7 +69,7 @@ export default function WordsTable() {
                         ? search(words).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         : search(words)).map(editWord =>
                             <TableRowComp
-                                word={editWord} key={editWord.id} createOrUpdate={createOrUpdate} deleteWord={deleteWord}
+                                word={editWord} key={editWord.id} createOrUpdateWord={createOrUpdateWord} deleteWord={deleteWord}
                             />
                         )}
                         {emptyRows > 0 && (
@@ -101,4 +107,5 @@ export default function WordsTable() {
         </Container>
         </StyledEngineProvider>
     );
+}
 }

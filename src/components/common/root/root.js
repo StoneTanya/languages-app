@@ -8,14 +8,23 @@ const ApiContext = createContext();
 export {ApiContext};
 
 export default function Root() {
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
     const [words, setWords] = useState([]);
+    
     const apiData = useContext(ApiContext);
 
     useEffect(() => {
-            apiData.getWordsData().then(result => {
+            apiData.getWordsData().then (
+            (result) => {
+                setIsLoaded(true);
                 setWords(result);
-                console.log(result)
-            })
+            },
+            (error) => {
+                setIsLoaded(false);
+                setError(error);
+            }
+        )
     }, [setWords, apiData]);
 
     const createOrUpdateWord =(newWord) => {
@@ -26,13 +35,16 @@ export default function Root() {
         } else {
             newWords = [newWord, ...words]
         }
-        setWords(newWords)
+        setWords(newWords);
+        console.log(words);
     }
 
     const deleteWord = (wordID) => {
         setWords(words.filter(word => word.id !== wordID));
+        console.log(words);
     }
-    const context = {words, setWords, createOrUpdateWord, deleteWord}
+    const context = {words, setWords, error, setError, isLoaded, setIsLoaded, createOrUpdateWord, deleteWord}
+    
     return (
         <>
             <Header />

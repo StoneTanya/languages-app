@@ -1,6 +1,6 @@
 export default class dataConstructor {
     constructor() {
-        this.baseURL = "http://itgirlschool.justmakeit.ru/api/words/"
+        this.baseURL = "http://itgirlschool.justmakeit.ru/api/words"
     }
     checkResponse = async (response) => {
         if (!response.ok) {
@@ -26,6 +26,14 @@ export default class dataConstructor {
     }
 
     getWordsData = async () => {
-        return await this.getData(this.baseURL)
+        return await this.getData(this.baseURL);
+    }
+
+    deleteWord = async (wordID) => {
+        return await this.sendData(`${this.baseURL}/${wordID}`, "DELETE");
+    }
+
+    createOrUpdateWord = async(wordID) => {
+        return await this.sendData(`${this.baseURL}/${wordID}`, "POST");
     }
 }
