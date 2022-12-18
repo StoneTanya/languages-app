@@ -1,15 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, forwardRef} from 'react';
 import {Card, CardActions, CardContent, Button, Typography, Box } from '@mui/material';
 import styles from './cards.module.scss';
 import {StyledEngineProvider } from '@mui/material/styles';
 
-
-export default function WordCard({word}) {
-//задано начальное состояние - перевод скрыт
-const [showTranslate, setShowTranslate] = useState(false);
-
-//функция показать перевод, меняет состояние
-const showRussian = () => {
+const WordCard = forwardRef(({word}, buttonRef) => {
+    const [showTranslate, setShowTranslate] = useState(false);
+    const showRussian = () => {
         setShowTranslate(true) 
     }
     return (
@@ -22,21 +18,20 @@ const showRussian = () => {
                         <Typography sx={{ mb: 1.5 }} color="text.secondary">{word.transcription}</Typography>
                         {showTranslate ?  
                         <Typography className={styles.content} variant="h5">{word.russian}</Typography> 
-                        : ""}
-                    </CardContent>
-                        {showTranslate ? "" 
-                        : <CardActions sx={{ mb: 3 }}>
-                            <Button className={styles.button} size="small" variant="contained" onClick={showRussian}>
-                            Показать перевод
+                        : 
+                        <CardActions sx={{ mb: 3 }}>
+                            <Button className={styles.button} size="small" variant="contained" onClick={showRussian} ref={buttonRef}>
+                                Показать перевод
                             </Button>
                         </CardActions>}
+                    </CardContent>
                 </Card>
             </Box>
         </StyledEngineProvider>
         </>
     )
-};
+});
 
-
+export default WordCard;
 
 

@@ -11,13 +11,15 @@
 }
 
 .button {
-    font-family: 'Days One', sans-serif;
-    cursor: pointer;
     transition: ease-out;
     &:hover {
         transform: scale(1.1);
         }
+        &:focus-within {
+            outline: 3px solid rgb(62, 148, 192);
+        }
 }
+
 
 .card__box {
     background-color:  #F5F5F5;

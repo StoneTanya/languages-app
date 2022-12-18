@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Container, Box } from '@mui/system';
 import Button from '@mui/material/Button';
 import WordCard from "./Card";
@@ -7,7 +7,6 @@ import {useOutletContext} from 'react-router-dom';
 
 export default function CardsSlider() {
     const {words, createOrUpdate, deleteWord} = useOutletContext();
-
     const [activeStep, setActiveStep] = useState(0);
     const maxSteps = words.length;
 
@@ -18,7 +17,13 @@ export default function CardsSlider() {
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
-    const WordComponent = words.map(editWord => <WordCard word={editWord} key={editWord.id} createOrUpdate={createOrUpdate} deleteWord={deleteWord}/>)
+
+    const buttonRef = useRef();
+    useEffect(() => {
+        buttonRef.current.focus();
+    }, [activeStep]);
+
+    const WordComponent = words.map(editWord => <WordCard word={editWord} key={editWord.id} createOrUpdate={createOrUpdate} deleteWord={deleteWord} ref={buttonRef} />)
 
     return (
         <Container>
