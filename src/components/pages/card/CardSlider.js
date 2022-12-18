@@ -28,6 +28,9 @@ export default function CardsSlider() {
     return (
         <Container>
             <Box className={styles.card__box} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+                <Box>
+                {activeStep} / {maxSteps}
+                </Box>
                 {WordComponent[activeStep]}
                 <Box>
                     <Button className={styles.back} size="small" onClick={handleBack} disabled={activeStep === 0}>Back</Button>
