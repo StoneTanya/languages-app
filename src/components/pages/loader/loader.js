@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Box from '@mui/joy/Box';
+import { Box } from "@mui/material";
 import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Loader() {
