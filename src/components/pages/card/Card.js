@@ -3,10 +3,12 @@ import {Card, CardActions, CardContent, Button, Typography, Box } from '@mui/mat
 import styles from './cards.module.scss';
 import {StyledEngineProvider } from '@mui/material/styles';
 
-const WordCard = forwardRef(({word}, buttonRef) => {
+const WordCard = forwardRef((props, buttonRef) => {
+    const {word, handleTranslateButton} = props;
     const [showTranslate, setShowTranslate] = useState(false);
     const showRussian = () => {
-        setShowTranslate(true) 
+        setShowTranslate(true);
+        handleTranslateButton(); 
     }
     return (
         <>

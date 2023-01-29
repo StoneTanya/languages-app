@@ -6,7 +6,6 @@ import {FirstPageIcon, KeyboardArrowLeft, KeyboardArrowRight, LastPageIcon  } fr
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 
-
 export default function TablePaginationActions(props) {
     const theme = useTheme();
     const { count, page, rowsPerPage, onPageChange } = props;

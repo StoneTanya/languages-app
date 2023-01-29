@@ -26,17 +26,17 @@ export default function TableRowComp({word, createOrUpdateWord, deleteWord}) {
             <>
                 <TableCell><TextField id="outlined-read-only-input" defaultValue={word.id}/></TableCell>
                 <TableCell><TextField id="outlined-read-only-input"
-                                      defaultValue={word.english}
-                                      onChange={(event) => changeWord("english", event.target.value)}/>
+                                        defaultValue={word.english}
+                                        onChange={(event) => changeWord("english", event.target.value)}/>
                 </TableCell>
                 <TableCell><TextField id="outlined-read-only-input" defaultValue={word.transcription}/></TableCell>
                 <TableCell><TextField id="outlined-read-only-input"
-                                      defaultValue={word.russian}
-                                      onChange={(event) => changeWord("russian", event.target.value)}/>
+                                        defaultValue={word.russian}
+                                        onChange={(event) => changeWord("russian", event.target.value)}/>
                 </TableCell>
                 <TableCell>
                     <ButtonGroup variant="text" aria-label="text button group">
-                        <Button onClick={handleSaveButton}>Save</Button>
+                        <Button onClick={handleSaveButton} disabled={changingWord === " "}>Save</Button>
                         <Button onClick={() => deleteWord(word.id)}><DeleteIcon></DeleteIcon></Button>
                     </ButtonGroup>
                 </TableCell>

@@ -11,19 +11,25 @@
 }
 
 .button {
+    margin-top: 20px;
     transition: ease-out;
     &:hover {
         transform: scale(1.1);
         }
         &:focus-within {
-            outline: 3px solid rgb(62, 148, 192);
+            outline: 5px solid rgb(61, 208, 159);
         }
 }
 
-
 .card__box {
-    background-color:  #F5F5F5;
+    background-color:  #f4fdf8;
     border-radius: 10px;
     margin-top: 3%;
     padding: 5% 5%;
+}
+
+.back, .next {
+    &:hover {
+        color: rgb(29, 10, 148);
+        }
 }
