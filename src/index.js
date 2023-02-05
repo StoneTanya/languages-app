@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {RouterProvider} from "react-router-dom";
-import reportWebVitals from './reportWebVitals';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './Theme';
 import './index.scss';
-import {ApiContext} from "./components/common/root/root";
-import dataConstructor from "./apiDataConstructor";
+import {ApiContext} from "./pages/root/root";
+import dataConstructor from "./services/apiDataConstructor";
 import router from './router';
 
 const apiData = new dataConstructor();
@@ -23,5 +22,3 @@ root.render(
     </React.StrictMode>
   </ThemeProvider>
 );
-
-reportWebVitals();
