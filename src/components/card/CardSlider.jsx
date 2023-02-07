@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Container, Box } from '@mui/system';
 import Button from '@mui/material/Button';
 import WordCard from "./Card";
 import styles from './cards.module.scss';
-import { useOutletContext } from 'react-router-dom';
+import {ApiContext} from '../context/context';
 
 export default function CardsSlider() {
-    const { words, createOrUpdate, deleteWord } = useOutletContext();
+    const { words, createOrUpdate, deleteWord } = useContext(ApiContext);
+    
     const [activeStep, setActiveStep] = useState(0);
     const maxSteps = words.length;
     const [wasLearned, setWasLearned] = useState(0);

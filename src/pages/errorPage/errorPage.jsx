@@ -9,7 +9,7 @@ export default function ErrorPage() {
     let navigate = useNavigate();
 
     const goHome = () => {
-        navigate("/");
+        navigate("");
     };
 
     return (

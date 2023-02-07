@@ -1,14 +1,14 @@
-import { React, useState } from "react";
-import { useOutletContext } from 'react-router-dom';
+import { React, useState, useContext } from "react";
+import { ApiContext } from "../context/context";
 import { Paper, Box, Table, TableContainer, TableBody, TableCell, TableRow, TableHead, TableFooter, TablePagination, TextField } from "@mui/material";
 import { Container } from "@mui/system";
+import { StyledEngineProvider } from '@mui/material/styles';
 import styles from "./table.module.scss";
 import TableRowComp from "./TableRow";
-import { StyledEngineProvider } from '@mui/material/styles';
 import Loader from "../loader/loader";
 
 export default function WordsTable() {
-    const { words, createOrUpdateWord, deleteWord, TablePaginationActions, isLoaded, error } = useOutletContext();
+    const { words, createOrUpdateWord, deleteWord, TablePaginationActions, isLoaded, error } = useContext(ApiContext);
 
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -41,7 +41,7 @@ export default function WordsTable() {
         });
     }
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return <div>Error:{error.message}</div>;
     } else if (!isLoaded) {
         return <Loader />;
     } else {

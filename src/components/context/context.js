@@ -1,18 +1,14 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
-import { Outlet } from 'react-router-dom';
-import { Container } from '@mui/material';
-import Header from '../header';
-import Footer from '../footer';
+import React, { useState, useEffect, createContext } from "react";
+import dataConstructor from '../../services/apiDataConstructor';
 
-const ApiContext = createContext();
-export { ApiContext };
+export const ApiContext = createContext();
 
-export default function Root() {
+export const ContextProvider = ({children}) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [words, setWords] = useState([]);
 
-    const apiData = useContext(ApiContext);
+    const apiData = new dataConstructor();
 
     useEffect(() => {
         apiData.getWordsData().then(
@@ -25,7 +21,7 @@ export default function Root() {
                 setError(error);
             }
         )
-    }, [setWords, apiData]);
+    }, []);
 
     const createOrUpdateWord = (newWord) => {
         const wordIndex = words.findIndex(word => word.id === newWord.id)
@@ -36,24 +32,18 @@ export default function Root() {
             newWords = [newWord, ...words]
         }
         setWords(newWords);
-        console.log(words);
     }
 
     const deleteWord = (wordID) => {
         setWords(words.filter(word => word.id !== wordID));
-        console.log(words);
     }
 
-    const context = { words, setWords, error, setError, isLoaded, setIsLoaded, createOrUpdateWord, deleteWord }
+    const values = { words, setWords, error, setError, isLoaded, setIsLoaded, createOrUpdateWord, deleteWord };
 
     return (
-        <>
-            <Header />
-            <Container>
-                <Outlet context={context} />
-            </Container>
-            <Footer />
-        </>
+        <ApiContext.Provider value={values}>
+            {children}
+        </ApiContext.Provider>
     )
 }
 

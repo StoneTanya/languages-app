@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function TableRowComp({word, createOrUpdateWord, deleteWord}) {
     const [editMode, setEditMode] = useState(false);
-    const [changingWord, setChangingWord] = useState(word)
+    const [changingWord, setChangingWord] = useState(word);
 
     const handleEditButton = () => {
         setEditMode(true);
