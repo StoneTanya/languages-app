@@ -9,7 +9,7 @@ function Copyright() {
         <Typography className={styles.content} variant="body2" color="text.secondary" align="center">
             {'Copyright © '}
             <Link className={styles.content} color="inherit" href="#">
-                Tanya Kameneva
+                Tanya Volkova
             </Link>{' '}
             {new Date().getFullYear()}
         </Typography>
