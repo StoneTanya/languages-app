@@ -8,7 +8,7 @@ function Copyright() {
     return (
         <Typography className={styles.content} variant="body2" color="text.secondary" align="center">
             {'Copyright © '}
-            <Link className={styles.content} color="inherit" href="#">
+            <Link className={styles.content} color="inherit" href="https://github.com/StoneTanya">
                 Tanya Volkova
             </Link>{' '}
             {new Date().getFullYear()}
@@ -19,7 +19,7 @@ function Copyright() {
 export default function Footer() {
     return (
         <StyledEngineProvider injectFirst>
-            <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '45vh' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <Box component="footer"
                     sx={{
                         display: { xs: 'flex', md: 'flex' }, flexDirection: 'column', justifyItems: 'center',

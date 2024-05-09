@@ -1,10 +1,12 @@
 
 import React from "react";
-import Box from "@mui/material";
+import {Box} from "@mui/material";
 import IconButton from '@mui/material/IconButton';
-import {FirstPageIcon, KeyboardArrowLeft, KeyboardArrowRight, LastPageIcon  } from '@mui/icons-material';
+import {KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
+import LastPageIcon from '@mui/icons-material/LastPage';
+import FirstPageIcon from '@mui/icons-material/FirstPage';
 
 export default function TablePaginationActions(props) {
     const theme = useTheme();

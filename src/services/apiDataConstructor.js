@@ -10,7 +10,7 @@ export default class dataConstructor {
     }
     getData = async (url) => {
         const response = await fetch(url);
-        await this.checkResponse(response)
+        await this.checkResponse(response);
         return await response.json();
     }
     sendData = async (url, method, data) =>{

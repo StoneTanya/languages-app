@@ -4,11 +4,12 @@ import { Paper, Box, Table, TableContainer, TableBody, TableCell, TableRow, Tabl
 import { Container } from "@mui/system";
 import { StyledEngineProvider } from '@mui/material/styles';
 import styles from "./table.module.scss";
-import TableRowComp from "./TableRow";
-import Loader from "../loader/loader";
+import TableRowComp from "./Table-row";
+import Loader from "../loader/Loader";
+import TablePaginationActions from "./Table-pagination";
 
 export default function WordsTable() {
-    const { words, createOrUpdateWord, deleteWord, TablePaginationActions, isLoaded, error } = useContext(ApiContext);
+    const { words, createOrUpdateWord, deleteWord, isLoaded, error } = useContext(ApiContext);
 
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -20,11 +21,13 @@ export default function WordsTable() {
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - words.length) : 0;
 
     const handleChangePage = (event, newPage) => {
+        event.preventDefault();
         setPage(newPage);
     };
 
     const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(parseInt(event.target.value, 5));
+        event.preventDefault();
+        setRowsPerPage(parseInt(event.target.value));
         setPage(0);
     };
 
@@ -51,7 +54,7 @@ export default function WordsTable() {
                     <Box m={5}>
                         <Box component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} noValidate autoComplete="off">
                             <TextField id="filled-search" label="Search for..." type="search"
-                                value={value} onChange={(event) => setValue(event.target.value)} />
+                             value={value} onChange={(event) => setValue(event.target.value)} />
                         </Box>
                         <TableContainer component={Paper} >
                             <Table className={styles.table} sx={{ minWidth: 450 }} aria-label="custom pagination table">
@@ -82,7 +85,7 @@ export default function WordsTable() {
                                 <TableFooter>
                                     <TableRow>
                                         <TablePagination
-                                            rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                                            rowsPerPageOptions={[5, 10, 20, { label: 'All', value: -1 }]}
                                             colSpan={5}
                                             count={words.length}
                                             rowsPerPage={rowsPerPage}

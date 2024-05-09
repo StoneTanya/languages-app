@@ -18,8 +18,7 @@ function Home() {
         <>
             <Container sx={{
                 display: 'flex',
-                flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around', alignItems: 'center'
-            }}>
+                flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around', alignItems: 'center'}} > 
                 <Box>
                     <StyledEngineProvider injectFirst>
                         <Typography className={style.slogan} sx={{ fontSize: 'h3.fontSize' }}>

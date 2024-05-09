@@ -21,7 +21,7 @@ export const ContextProvider = ({children}) => {
                 setError(error);
             }
         )
-    }, []);
+    });
 
     const createOrUpdateWord = (newWord) => {
         const wordIndex = words.findIndex(word => word.id === newWord.id)

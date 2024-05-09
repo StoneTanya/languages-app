@@ -17,7 +17,7 @@ export default function ErrorPage() {
             <>
                 <Box className={styles.container} id="error-page">
                     <Typography color="error" sx={{ fontSize: 'h3.fontSize' }}>Oops!</Typography>
-                    <Typography color="white">Sorry, we can't fined this page! </Typography>
+                    <Typography color="white">Sorry, we can't find this page! </Typography>
                     <Box>
                         <ErrorImage />
                     </Box>

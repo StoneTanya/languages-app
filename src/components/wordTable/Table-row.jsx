@@ -9,17 +9,17 @@ export default function TableRowComp({ word, createOrUpdateWord, deleteWord }) {
 
     const handleEditButton = () => {
         setEditMode(true);
-    }
+    };
     const handleSaveButton = () => {
         setEditMode(false);
         createOrUpdateWord(changingWord);
-    }
+    };
 
-    function changeWord(lang, value) {
+    const changeWord = (lang, value) => {
         const tmpWord = { ...changingWord }
-        tmpWord[lang] = value
+        tmpWord[lang] = value;
         setChangingWord(tmpWord);
-    }
+    };
     return (
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
             {editMode ?
